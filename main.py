@@ -137,7 +137,7 @@ class GenreSelect(discord.ui.Select):
         category_id = genre_map.get(genre)
 
         for _ in range(5):  # 최대 5번 재시도
-            start_page = random.randint(1, 100)
+            start_page = random.randint(1, 20)
             books = fetch_books_by_genre(category_id, start_page=start_page)
             if books:
                 book = random.choice(books)
@@ -169,7 +169,7 @@ async def random_book(interaction: discord.Interaction):
     await interaction.response.defer()
     for _ in range(5):
         category_id = random.choice(list(genre_map.values()))
-        start_page = random.randint(1, 100)
+        start_page = random.randint(1, 20)
         books = fetch_books_by_genre(category_id, start_page=start_page)
         if books:
             book = random.choice(books)
@@ -204,7 +204,7 @@ async def daily_recommendation():
         return
     for _ in range(5):
         category_id = random.choice(list(genre_map.values()))
-        start_page = random.randint(1, 100)
+        start_page = random.randint(1, 20)
         books = fetch_books_by_genre(category_id, start_page=start_page)
         if books:
             book = random.choice(books)
